@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+
+<html lang="zh-cn">
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1" />
+	<!-- @fragment_top Start-->
+<meta charset="UTF-8">
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>QQ帐号安全登录</title>
+<meta name="keywords" content="QQ互联、QQ登录、安全登录、网站接入、腾讯开放平台">
+<meta name="description" content="接入QQ互联，可实现与腾讯各项服务的无缝连接，安全帐号登录体系，用户动态同步腾讯各社交平台，调用腾讯公司各业务服务。">
+<meta name="copyright" content="Tencent" >
+<meta name="author" content="rtx://tencent/sng/yuanyan" >
+<link rel="Shortcut Icon" href="https://imgcache.qq.com/qzone/openapi/favicon.ico?t=20130219" type="image/x-icon">
+<link rel="icon" href="https://imgcache.qq.com/qzone/openapi/favicon.ico?t=20130219" type="image/x-icon">
+<link href="https://imgcache.qq.com/open/connect/widget/pc/login/qlogin_v2.min.css?max_age=2592000&v=20140818" rel="stylesheet">
+<script type="text/javascript">
+    window.__start = +new Date();
+    
+    document.domain = 'qq.com'; // todo 这里为什么要跨域
+    var _speedTiming = [+new Date];
+    (function error(monitorId){
+        var BID = 130;
+        var errorTransport = null;
+        var monitorTransport = null;
+        window.onerror = function(errorMsg, url, lineNumber) {
+            var bid = 'bid=' + BID;
+            var mid = '';
+            var msg = 'msg=' + encodeURIComponent([errorMsg, url, lineNumber, navigator.userAgent].join("|_|"));
+            var src = 'https://badjs.qq.com/cgi-bin/js_report?'+ [bid,mid,msg].join("&");
+            errorTransport = new Image;
+            errorTransport.onerror = errorTransport.onload = function(){
+                errorTransport = errorTransport.onerror = errorTransport.onload = null ;
+            };
+            // errorTransport.src = src;
+            monitorTransport = new Image;
+            monitorTransport.onerror = monitorTransport.onload = function(){
+                monitorTransport = monitorTransport.onerror = monitorTransport.onload = null ;
+            };
+            // monitorTransport.src = "http://cgi.connect.qq.com/report/report_vm?monitors=" +"["+monitorId+"]";
+        };
+    })(302299);
+</script>
+<!-- @fragment_top End -->
+</head>
+<body>
+<!-- @header Start-->
+<div class="lay_top">
+    <div class="lay_top_inner">
+        <h1 class="logo text_hide">QQ登录</h1>
+        <div class="lat_top_other">
+            <a href="http://connect.qq.com/intro/login" target="_blank" title="什么是QQ登录"><i class="icon_help_white"></i>QQ登录</a>
+            <span class="line">|</span>
+            <a href="http://connect.qq.com/toc/auth_manager?from=auth" id="auth_manager_link" target="_blank" title="登录授权管理">授权管理</a>
+            <span class="line">|</span>
+            <a href="http://connect.qq.com/manage" target="_blank" title="申请接入">申请接入</a>
+        </div>
+    </div>
+</div>
+<!-- @header End -->
+<div id="combine_page">
+  <div class="page_login combine_page_children float_left border_right">
+    <div class="lay_login_form">
+      
+      <div class="tips">
+        <div class="loading_tips vi_hide">
+          <span>登录中</span>
+          <img src="https://imgcache.qq.com/ptlogin/v4/style/0/images/load.gif" align="absmiddle">
+        </div>
+        <div class="wording_tips">
+          <span>检测到您已登录QQ帐号，点击头像授权并登录</span>
+        </div>
+      </div>
+      <div class="qlogin_show">
+        <a href="javascript:Q.agree();" class="face">
+		<img alt="孤城落寞" id="face" src="https://imgcache.qq.com/ptlogin/v4/style/0/images/1.gif"/>
+<script type="text/javascript">
+window.getUin = window.getUin || function() { return parseInt((document.cookie.match(/(?:^|;\s*)uin=o0*(\d+)/)||['','0'])[1], 10); };
+qqconect = {
+  getface:function(data){
+    try{
+      document.getElementById("face").src = data[getUin()];
+    }catch(e){}
+  }
+};
+(function(){
+var script = document.createElement('script');
+script.src = "https://openmobile.qq.com/getface?appid=716027609&imgtype=3&encrytype=0&devtype=0&keytype=0&uin=" + getUin();
+ document.getElementsByTagName('head')[0].appendChild(script);
+})();
+	        </script>
+          <span class="img_out_focus"></span>
+          <span class="nick">孤城落寞</span>
+          
+        </a>
+      </div>
+      <div class="wording_tips wording_timeout hide" style="display:none;">
+        <span><span class="timeout">5</span>秒后自动登录</span>
+      </div>
+      <div class="wording_tips wording_ch">
+        <a class="ch_uin" href="javascript:Q.logout();"></a>
+      </div>
+      
+    </div>
+  </div>
+  <div class="page_accredit combine_page_children float_left">
+    <div class="lay_main" id="lay_main">
+      <div class="lay_accredit_con">
+        <p class="cnt_wording"></p>
+        <p class="app_site_wording"><a class="accredit_site" id="accredit_site_link" href="http://www.imooc.com" target="_blank">慕课网</a>将获得以下权限：</p>
+        <div class="accredit_info" id="accredit_info">
+          <ul class="accredit_info_op">
+            <li class="select_all_li">
+              <input type="checkbox" id="select_all" class="checkbox oauth_checkbox_all" hidefocus="true" checked="checked">
+              <label class="oauth_item_title" for="select_all">全选</label>
+            </li>
+            
+            
+          </ul>
+        </div>
+        <div class="oauth_tips_div">
+          <p class="oauth_tips">授权后表明你已同意 <a href="http://connect.qq.com/agreement_chs" target="_blank">QQ登录服务协议</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+    _speedTiming.push(+new Date);
+    var Q = {};
+    Q.authsCount = 0;
+    Q.isNeedLogin = false;
+    Q.crtDomain = 'http://www.imooc.com';
+    Q.agree = function(){
+        window.isAgreed = true;
+    };
+    Q.logout = function(){
+        window.isLogouted = true;
+    };
+    
+    
+    function ptlogin2_onResize(w, h) {
+    	var f = document.getElementById('ptlogin_iframe');
+    	f.width = w;
+    	f.height = h;
+    }
+    if (!window.JSON) {
+    	document.write('<script type="text/javascript" src="https://imgcache.qq.com/open/operate/mlib/widget/json-for-ie.js"><\/script>');
+    }
+</script>
+
+<!--@fragment_bottom Start-->
+<script src="https://imgcache.qq.com/c/=/open/connect/widget/pc/login/pt_adapt.js,qlogin_v2.js?v=20140527" charset="UTF-8"></script>
+<script>
+    document.write('<script src="https://tajs.qq.com/stats?sId=52725868" charset="UTF-8"><\/script>');
+</script>
+<!--@fragment_bottom End -->
+
+<script>clearInterval(agreeInterval);</script>
+
+</body>
+</html>
